@@ -46,6 +46,21 @@ NB: You can skip these steps if you have already registered a username to your l
 ### Deploy to CloudFoundry with ruby v1.9 runtime
 	vmc push --runtime ruby19
 	
+### Issues
+
+https://github.com/plataformatec/simple_form/issues/361
+
+There is a known issue with gems which have non US-ASCII characters in them when rubygems < 1.8 is used. Micro CloudFoundry appears to use 1.7.2.
+
+In the case of SimpleForm this in the gemspec file where the authors names are listed. The following error is shown in '/var/vcap/sys/log/cloud_controller/cloud_controller.stderr.log':-
+
+	ERROR:  While executing gem ... (ArgumentError)
+    invalid byte sequence in US-ASCII
+	/var/vcap/packages/cloud_controller/cloud_controller/vendor/bundle/ruby/1.9.1/gems/vcap_staging-0.1.37/lib/vcap/staging/plugin/gemfile_task.rb:90:in `block in install_gems': Failed installing simple_form-2.0.1.gem (RuntimeError)
+	
+See https://github.com/plataformatec/simple_form/issues/361 for further information.
+
+	
 ### References
 
 http://start.cloudfoundry.com/frameworks/ruby/rails-3-1.html

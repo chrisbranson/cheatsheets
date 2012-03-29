@@ -3,6 +3,10 @@ Heroku cheat sheet
 
 ### get info about your app on heroku
 	heroku info
+	
+### rebuild production assets prior to heroku push
+	rm -Rf public/assets
+	RAILS_ENV=production bundle exec rake assets:precompile
 
 ### push code changes (after a commit) to heroku server
 	git push heroku
@@ -27,3 +31,15 @@ Heroku cheat sheet
 
 ### see what dynos/process are running
 	heroku ps
+
+### manually backup a database
+	heroku pgbackups:capture
+
+### list backups held by heroku
+	heroku pgbackups
+	
+### get a download url for a backup
+	heroku pgbackups:url b001
+	
+### delete a backup
+	heroku pgbackups:destroy b001

@@ -28,25 +28,26 @@ NB: comment out the existing gem 'jquery-rails' entry in your Gemfile
 	# gem 'heroku'
 	# gem 'newrelic_rpm'
 
-### update bundle and package ready for deployment
+### Update bundle and package ready for deployment
 	bundle install
 	bundle package
 	
-### rebuild production assets prior to deployment
+### Rebuild production assets prior to deployment
 	rm -Rf public/assets
 	RAILS_ENV=production bundle exec rake assets:precompile
 	
-### configure vmc
+### Configure vmc
 	vmc target http://api.[your micro foundry name].cloudfoundry.me
 	vmc register
 	vmc login youremail@yourdomain.com
 	
 NB: You can skip these steps if you have already registered a username to your local CloudFoundry installation
 	
-### deploy to CloudFoundry with ruby v1.9 runtime
+### Deploy to CloudFoundry with ruby v1.9 runtime
 	vmc push --runtime ruby19
 	
 ### References
 
 http://start.cloudfoundry.com/frameworks/ruby/rails-3-1.html
+
 http://support.cloudfoundry.com/entries/20757913-getting-a-rails-3-1-1-production-environment-working

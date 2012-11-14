@@ -34,6 +34,9 @@ RVM cheat sheet
 	export PATH=/Library/PostgreSQL/9.0/bin:$PATH
 #### 5. install application gems
 	bundle install
+	
+### Create pow environment files for each project
+	rvm env -- 1.9.3-p194@cobra > .powenv
 
 ### temporarily change version of ruby:
 	rvm ruby-1.9.2-p180

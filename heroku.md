@@ -25,6 +25,12 @@ Heroku cheat sheet
 
 ### tail heroku logs
 	heroku logs --tail
+	
+### run db:migrate
+	heroku run rake db:migrate
+	
+### fire up a rails console
+	heroku run console
 
 ### manually scale web and worker dynos
 	heroku scale web=1 worker=0
@@ -43,3 +49,6 @@ Heroku cheat sheet
 	
 ### delete a backup
 	heroku pgbackups:destroy b001
+	
+### fetch the latest backup
+	curl -o latest.dump `heroku pgbackups:url`
